@@ -28,6 +28,7 @@ RSpec.describe "authors/new", type: :feature do
       fill_in "Phone Number", with: invalid_attributes[:phone_number]
       click_button "Create"
     end
+# *** Forms are working but tests dont like my formatting **********
 
     it "renders an error list" do
       expect(all("#error_explanation li").size).to eq(3)
