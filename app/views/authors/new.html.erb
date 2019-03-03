@@ -1,18 +1,31 @@
 <h2>Create an Author</h2>
+<%  field_class = "field" %>
+<%  if !@author.errors.empty?
+      field_class = "field_with_errors"
+%>
+  <div id="error_explanation">
+    <ul>
+      <% @author.errors.each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_tag authors_path, method: "post" do %>
-  <div class="field">
-    <%= label_tag "name", "Name" %>
-    <%= text_field_tag "name" %>
+  <div class="<%= field_class %>">
+    <%= label_tag :name, "Name" %>
+    <%= text_field_tag :name, @author.name %>
   </div>
 
-  <div class="field">
-    <%= label_tag "email", "Email" %>
-    <%= text_field_tag "email" %>
+  <div class="<%= field_class %>">
+    <%= label_tag :email, "Email" %>
+    <%= text_field_tag "email", @author.email %>
   </div>
 
-  <div class="field">
-    <%= label_tag "phone_number", "Phone Number" %>
-    <%= text_field_tag "phone_number" %>
+  <div class="<%= field_class %>">
+    <%= label_tag :phone_number, "Phone Number" %>
+    <%= text_field_tag :phone_number, @author.phone_number %>
   </div>
 
   <%= submit_tag "Create" %>
